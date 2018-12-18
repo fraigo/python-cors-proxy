@@ -35,7 +35,8 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'corsproxy'
 ]
 
 MIDDLEWARE = [

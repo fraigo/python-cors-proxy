@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CORS Test Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .raw {
+            white-space: pre-wrap;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 5px;
+            border: 1px solid #ccc;
+            
+            overflow: auto;
+            width: 95vw;
+        }
+        .ok {
+            background-color: #FFC;
+        }
+        .error {
+            background-color: #FCC;
+        }
+    </style>
+</head>
+<body onload="load()">
+    <div>
+        <h3>Direct request</h3>
+        <input id="url" type=text value="https://www.wikipedia.org/" size="100">
+        <input type=button onclick="getDirectResponse()" value="Direct response">
+        <h3>Proxy request</h3>
+        <input id="proxyurl" type=text value="" size="100">
+        <input type=button onclick="getProxyResponse()" value="Proxy response">
+    </div>
+    <h3>Response</h3>
+    Request URL:
+    <pre class="raw" id="finalurl"></pre>
+    Raw Response:
+    <pre class="raw" id="result"></pre>
+    <script>
+        function load(){
+            var endpoint=document.location.protocol+"//"+document.location.host+"/?url={url}";
+            document.getElementById("proxyurl").value=endpoint;
+        }
+        function getDirectResponse(){
+            var url=document.getElementById("url").value;
+            getResponse(url);
+        }
+        function getProxyResponse(){
+            var endpoint=document.getElementById("proxyurl").value;
+            var url=endpoint.replace("{url}",document.getElementById("url").value);
+            getResponse(url);
+        }
+        function getResponse(url){
+            var result=document.getElementById("result");
+            var finalUrl=document.getElementById("finalurl");
+            finalUrl.innerText=url;
+            result.className="raw";
+            result.innerText="Loading...";
+            fetch(url)
+                .then(function(response) {
+                    if (response.ok){
+                        response.text().then(function(text){
+                            result.innerText=text;
+                            result.className="raw ok";
+                        })
+                    }else{
+                        console.log(response);
+                        result.innerText='Error:' + response.status+" "+response.statusText;
+                        result.className="raw error";
+                    }
+                })
+                .catch(function(error) {
+                    console.log(Object.keys(error));
+                    result.innerText='Error:' + error.message;
+                    result.className="raw error";
+                });
+        
+        }
+        window.onerror=function(e){
+            console.log(e);
+        }
+    </script>
+
+    
+</body>
+</html>
