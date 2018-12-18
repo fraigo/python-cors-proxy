@@ -73,14 +73,18 @@ You need an accout in Heroku.com to login.
 
 ### Asociate your repository with Heroku
 
-Register your application as a python/django project:
+Optionally, register your application as a python/django project:
 
 `heroku buildpacks:set heroku/python`
 
-If you registered the applciation **using the web dashboard**, run this command, using the **app name** you previously registered in Heroku
+Also, if you registered the applciation **using the web dashboard**, run this command, using the **app name** you previously registered in Heroku
 
 `heroku git:remote -a your-app-name`
 
 ### Deploy your application
 
 `git push heroku master`
+
+
+Now your application is published at `http://your-app-name.herokuapp.com/`
+
