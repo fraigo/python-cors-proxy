@@ -39,7 +39,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-
+    'corsproxy.cors.Middleware'
 ]
 
 ROOT_URLCONF = 'corsproxy.urls'
