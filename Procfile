@@ -1,0 +1,1 @@
+web: gunicorn corsproxy.wsgi --log-file -

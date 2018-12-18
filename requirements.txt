@@ -1,0 +1,4 @@
+Django
+gunicorn
+django_heroku
+psycopg2-binary
