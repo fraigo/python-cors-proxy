@@ -70,6 +70,14 @@ You need an accout in Heroku.com to login.
 2. Using Heroku CLI:
     1. Run in your project:
     `heroku apps:create your-app-name`
+3. Edit `ALLOWED_HOSTS` in `corsproxy/settings.py`: 
+    
+```python
+ALLOWED_HOSTS = [
+    'localhost',
+    'your-app-name.herokuapp.com'
+]
+```
 
 ### Asociate your repository with Heroku
 
