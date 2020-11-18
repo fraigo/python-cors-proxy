@@ -32,7 +32,7 @@ You can modify the local port (current, `8000`) running the server with an extra
 
 1. Install Docker Desktop
 
-2. Run `dockker-compose up -d` from the application folder
+2. Run `docker-compose up` from the application folder (`docker-compose up -d` to leave it in the foreground and `docker-compose stop` to stop it)
 
 3. You application will be served at http://localhost:8000/
 
