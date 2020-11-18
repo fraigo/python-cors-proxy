@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import django_heroku
+import sys
+try:
+    import django_heroku
+except ImportError:
+    pass
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -106,4 +110,5 @@ if DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    django_heroku.settings(locals())
+    if 'django_heroku' in sys.modules:
+        django_heroku.settings(locals())

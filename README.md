@@ -3,6 +3,40 @@
 A simple CORS proxy in Python/Django to fetch content from remote sites without a CORS policy. 
 
 
+
+## Run a web server locally
+
+1. [Install Python](https://developerhowto.com/2018/10/31/install-python-and-web-development-tools/)
+
+2. Run the package installation
+
+`pip install -r requirements-dev.txt`
+
+3. Start the local web server
+
+`python manage.py runserver`
+
+4. You application will be served at http://localhost:8000/
+
+You can modify the local port (current, `8000`) running the server with an extra parameter:
+
+`python manage.py runserver 0.0.0.0:LOCALPORT`
+
+## Run locally using Docker
+
+1. Install Docker Desktop
+
+2. Run `dockker-compose up -d` from the application folder
+
+3. You application will be served at http://localhost:8000/
+
+You can modify the local port (current, `8000`) changing `docker-compose.yml`
+
+```yml
+ports:
+    - 'LOCALPORT:8000'
+```
+
 ## Usage
 
 
@@ -10,24 +44,11 @@ You can request any URL using:
 
 `http://your.server/?url=https://your.url/request/`
 
-### Run a web server locally
-
-1. [Install Python](https://developerhowto.com/2018/10/31/install-python-and-web-development-tools/)
-
-2. Run the package installation
-
-`pip install -r requirements.txt`
-
-3. Start the local web server
-
-`python manage.py runserver`
-
-You application will be served at http://localhost:8000/
-
-Try for example, fetching [http://ip-api.com/json/8.8.8.8](http://ip-api.com/json/8.8.8.8):
+Once started your server, try for example, fetching [http://ip-api.com/json/8.8.8.8](http://ip-api.com/json/8.8.8.8):
 
 `http://localhost:8000/?url=http://ip-api.com/json/8.8.8.8`
 
+Sample result:
 
 ```json
 {"as":"AS15169 Google LLC","city":"Mountain View","country":"United States","countryCode":"US","isp":"Level 3 Communications","lat":37.4229,"lon":-122.085,"org":"Google Inc.","query":"8.8.8.8","region":"CA","regionName":"California","status":"success","timezone":"America/Los_Angeles","zip":"94043"}

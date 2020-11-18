@@ -1,0 +1,12 @@
+version: '2'
+services:
+  django:
+    build: .docker/
+    image: 'python3.7-django'
+    ports:
+      - '8000:8000'
+    volumes:
+      - '.:/home/django/webapp'
+    environment:
+      - REQUIREMENTS_FILE=requirements-dev.txt
+      - PACKAGES=
