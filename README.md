@@ -6,21 +6,27 @@ A simple CORS proxy in Python/Django to fetch content from remote sites without 
 
 ## Run a web server locally
 
-1. [Install Python](https://developerhowto.com/2018/10/31/install-python-and-web-development-tools/)
+1. [Install Python 3](https://developerhowto.com/2018/10/31/install-python-and-web-development-tools/)
 
 2. Run the package installation
 
 `pip install -r requirements-dev.txt`
 
+(`python3 -m pip install -r requirements-dev.txt` if your default is python2)
+
 3. Start the local web server
 
 `python manage.py runserver`
+
+(`python3 manage.py runserver` if your default is python2)
 
 4. You application will be served at http://localhost:8000/
 
 You can modify the local port (current, `8000`) running the server with an extra parameter:
 
 `python manage.py runserver 0.0.0.0:LOCALPORT`
+
+(`python3 manage.py runserver 0.0.0.0:LOCALPORT` if your default is python2)
 
 ## Run locally using Docker
 
