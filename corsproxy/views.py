@@ -19,7 +19,7 @@ def index(request):
         with req.urlopen(remote_request) as response:
             content = response.read()
     except req.HTTPError as err:
-        return HttpResponse(status=err.code)
+        return HttpResponse(url,status=err.code)
     except:
-        return HttpResponse(status=400)
+        return HttpResponse(url,status=400)
     return HttpResponse(content, status=200)
