@@ -5,6 +5,7 @@ from django.http import HttpResponse
 
 def index(request):
     url = parse.quote(request.GET.get('url'))
+    url = url.replace('%3A', ':')
     headers = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) Firefox/106.0.1',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*',
