@@ -5,7 +5,7 @@ from django.http import HttpResponse
 def index(request):
     url = request.GET.get('url')
     headers = {
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) Firefox/15.0.1',
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) Firefox/106.0.1',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*',
         'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
         'Accept-Encoding': 'none',
