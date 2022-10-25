@@ -1,9 +1,10 @@
 import urllib.request as req
+import urllib.parse as parse
 from django.http import HttpResponse
 
 
 def index(request):
-    url = request.GET.get('url')
+    url = parse.quote(request.GET.get('url'))
     headers = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) Firefox/106.0.1',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*',
@@ -21,5 +22,5 @@ def index(request):
     except req.HTTPError as err:
         return HttpResponse('HTTP ERROR ' + url,status=err.code)
     except:
-        return HttpResponse('REQUEST ERROR '+url,status=500)
+        return HttpResponse('REQUEST ERROR ' + url,status=500)
     return HttpResponse(content, status=200)
